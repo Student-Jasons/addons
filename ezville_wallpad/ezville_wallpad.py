@@ -3,6 +3,7 @@
 import socket
 import serial
 import paho.mqtt.client as paho_mqtt
+from paho.mqtt.client import CallbackAPIVersion
 import json
 
 import sys
@@ -401,7 +402,7 @@ serial_ack = {}
 last_query = int(0).to_bytes(2, "big")
 last_topic_list = {}
 
-mqtt = paho_mqtt.Client()
+mqtt = paho_mqtt.Client(CallbackAPIVersion.VERSION1, 'mqtt-ezville')
 mqtt_connected = False
 
 logger = logging.getLogger(__name__)
